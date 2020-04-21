@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+取值:<input value="11111111" th:value="${hello}" type="text"/>
+<br />
+循环:<input value="11111111" th:each="object:${list}" th:value="${object}" type="text"/>
+<br />
+判断:<input value="11111111" th:if="${1==1}" th:checked="${1==2}" type="checkbox"/>
+<br />
+页面调用js:<a th:href="'javascript:a(\''+${hello}+'\')'">点击我</a>
+<br />
+页面内嵌
+<div th:include="a::f"></div>
+
+<script language="JavaScript">
+    function a(hello){
+        alert(hello);
+    }
+</script>
+</body>
+</html>
