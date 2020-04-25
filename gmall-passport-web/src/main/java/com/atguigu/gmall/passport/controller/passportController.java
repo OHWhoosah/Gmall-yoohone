@@ -146,6 +146,7 @@ public class passportController {
         System.out.println("认证中心首页");
 
         modelMap.put("ReturnUrl", ReturnUrl);
+        System.out.println(ReturnUrl);
         return "index";
     }
 }
