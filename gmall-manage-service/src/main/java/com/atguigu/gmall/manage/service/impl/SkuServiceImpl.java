@@ -115,7 +115,7 @@ public class SkuServiceImpl implements SkuService {
                     if (pmsSkuInfoReturn != null) {
                         System.out.println(Thread.currentThread().getName() + ":" + ip + "同步缓存，然后解锁");
                         jedis.set("sku:" + skuId + ":info", JSON.toJSONString(pmsSkuInfoReturn));
-                         //将锁解开
+                        //将锁解开
                         String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', " +
                                 "KEYS[1]) else return 0 end";
                         Object eval = jedis.eval(script, Collections.singletonList("sku:" + skuId + ":lock"),

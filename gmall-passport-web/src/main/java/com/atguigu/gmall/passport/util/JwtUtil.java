@@ -22,7 +22,8 @@ public class JwtUtil {
 //        System.out.println(encode);
 
 
-        String token = "eyJhbGciOiJIUzI1NiJ9.eyJuaWNrbmFtZSI6InRvbSIsInVzZXJpZCI6IjEifQ.AxTdunwdt9lCcCRRBenDITrXHvK3iEv0lC2yU_ozlLs";
+        String token = "eyJhbGciOiJIUzI1NiJ9.eyJuaWNrbmFtZSI6InRvbSIsInVzZXJpZCI6IjEifQ" +
+                ".AxTdunwdt9lCcCRRBenDITrXHvK3iEv0lC2yU_ozlLs";
 
         Map<String, Object> decode = decode(token, key, ip);
 

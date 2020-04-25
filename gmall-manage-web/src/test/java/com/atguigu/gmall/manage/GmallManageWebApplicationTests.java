@@ -7,7 +7,6 @@ import org.csource.fastdfs.TrackerClient;
 import org.csource.fastdfs.TrackerServer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -35,7 +34,7 @@ public class GmallManageWebApplicationTests {
 
 		String[] jpgs = storageClient.upload_file("d:/a.jpg", "jpg", null);
 
-		String url = "http://192.168.222.20";
+		String url = "http://192.168.174.100";
 		for (String jpg : jpgs) {
 			url = url + "/" + jpg;
 		}

@@ -10,14 +10,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 public class MyUploadUtil {
-
-
     public static String uploadImage(MultipartFile file) {
-
         String path = MyUploadUtil.class.getClassLoader().getResource("traker.conf").getPath();
-
         try {
-            ClientGlobal.init(path);// tracker地址，超时时间，链接时间
+            // tracker地址，超时时间，链接时间
+            ClientGlobal.init(path);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (MyException e) {
@@ -27,18 +24,20 @@ public class MyUploadUtil {
         // 根据配置获得tracker
         TrackerClient trackerClient = new TrackerClient();
 
-        TrackerServer connection = null;// 通过tracker获得一个可用的storage
+        // 通过tracker获得一个可用的storage
+        TrackerServer connection = null;
         try {
             connection = trackerClient.getConnection();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        StorageClient storageClient = new StorageClient(connection, null);// 使用storage上传文件
+        // 使用storage上传文件
+        StorageClient storageClient = new StorageClient(connection,null);
 
         String url = "http://192.168.174.100";
         try {
-            String originalFilename = file.getOriginalFilename();//a.jpg
+            //a.jpg
+            String originalFilename = file.getOriginalFilename();
             int i = originalFilename.lastIndexOf(".");
             String substring = originalFilename.substring(i + 1);
             String[] jpgs = storageClient.upload_file(file.getBytes(), substring, null);
@@ -50,8 +49,6 @@ public class MyUploadUtil {
         } catch (MyException e) {
             e.printStackTrace();
         }
-
-
         return url;
     }
 }
