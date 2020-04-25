@@ -67,6 +67,7 @@ public class passportController {
             umsMember.setAccessToken(access_token);
             umsMember.setAccessCode(code);
             umsMember = userService.addUser(umsMember);
+            System.out.println(umsMember);
         }
 
 

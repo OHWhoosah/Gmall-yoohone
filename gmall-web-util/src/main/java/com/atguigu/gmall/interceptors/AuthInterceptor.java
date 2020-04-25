@@ -44,6 +44,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
             if (StringUtils.isNotBlank(token)) {
                 // 验证用户的token是否正确
+
                 // 通过远程ws请求认证中心，验证token
                 String requestUrl =
                         "http://passport.gmall.com:8090/verify?token=" + token + "&currentIp=" + request.getRemoteAddr();
