@@ -17,5 +17,14 @@ public class DoubSigleton {
 
     }
 
+    public static void main(String[] args) {
+        DoubSigleton doubSigleton = new DoubSigleton();
+        DoubSigleton instance = DoubSigleton.getInstance();
+        System.out.println(instance);
+        System.out.println(doubSigleton.getClass());
+
+
+    }
+
 
 }
