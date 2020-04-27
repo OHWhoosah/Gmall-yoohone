@@ -5,5 +5,6 @@ public class TestDemo {
         System.out.println("吾爱中国，自强不息，铮铮铁骨!");
         System.out.println("提交rebase分支！");
         System.out.println("提交rebase分支2！");
+        System.out.println("提交rebase分支3！");
     }
 }
