@@ -11,8 +11,18 @@ public class DoubSigleton {
 
         if (instance != null) {
             instance = new DoubSigleton();
+            System.out.println(instance.toString());
         }
         return instance;
+
+    }
+
+    public static void main(String[] args) {
+        DoubSigleton doubSigleton = new DoubSigleton();
+        DoubSigleton instance = DoubSigleton.getInstance();
+        System.out.println(instance);
+        System.out.println(doubSigleton.getClass());
+
 
     }
 
