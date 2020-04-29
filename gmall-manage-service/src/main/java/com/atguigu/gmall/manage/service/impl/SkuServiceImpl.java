@@ -120,6 +120,16 @@ public class SkuServiceImpl implements SkuService {
                                 "KEYS[1]) else return 0 end";
                         Object eval = jedis.eval(script, Collections.singletonList("sku:" + skuId + ":lock"),
                                 Collections.singletonList(lockNo));
+                        /**
+                         *我们解锁只需要两行代码就搞定了！第一行代码，我们写了一个简单的Lua脚本代码
+                         *第二行代码，我们将Lua代码传到jedis.eval()方法里，并使参数KEYS[1]赋值为lockKey，
+                         * ARGV[1]赋值为requestId。eval()方法是将Lua代码交给Redis服务端执行。
+                         *那么这段Lua代码的功能是什么呢？其实很简单，首先获取锁对应的value值，检查是否与requestId相等，如果相等则删除锁（解锁）。
+                         * 那么为什么要使用Lua语言来实现呢？因为要确保上述操作是原子性的。
+                         *那么为什么执行eval()方法可以确保原子性，源于Redis的特性，下面是官网对eval命令的部分解释：
+                         * 简单来说，就是在eval命令执行Lua代码的时候，Lua代码将被当成一个命令去执行，并且直到eval命令执行完成，Redis才会执行其他命令。
+                         *
+                         * **/
                     }
                 } else {
                     // 自旋
